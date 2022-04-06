@@ -307,8 +307,7 @@ class WekeoPP:
 
 if "__main__"==__name__:
     parser = argparse.ArgumentParser(description='WekeoPPget options', prog="eLTER")
-    parser.add_argument("--user", dest="user", action="store", help=" your user account on wekeo ")
-    parser.add_argument("--pswd", dest="pswd", action="store", help=" your password account on wekeo ")
+    parser.add_argument("--login", dest="login", action="store", help=" json file where to recover user and password for the account on wekeo ")
     parser.add_argument("--tif", dest="tif", action="store_true", help=" add option if you want cutted element in tif format and not in netcdf4 ")
     parser.add_argument("--start", dest="start", action="store", help="start time e.g. '2022-12-01' or '2022-12-01 17:02:01' ")
     parser.add_argument("--end",   dest="end",  action="store", help="start time e.g. '2022-12-01' or '2022-12-01 17:02:01'")
@@ -325,7 +324,10 @@ if "__main__"==__name__:
           "yearly":["EO:HRVPP:DAT:VEGETATION-PHENOLOGY-AND-PRODUCTIVITY-PARAMETERS",['MAXV', 'SOSV', 'MAXD', 'EOSD', 'LSLOPE', 'MINV', 'RSLOPE','TPROD', 'EOSV', 'AMPL', 'LENGTH', 'SPROD', 'SOSD']],
           "daily":["EO:HRVPP:DAT:VEGETATION-INDICES",['PPI','NDVI','FAPAR','LAI','QFLAG']]}
     ARG=parser.parse_args()
-    WK=WekeoPP(ARG.user,ARG.pswd, ARG.tif)
+    import json
+    with open(ARG.login) as json_file:
+        LOGIN = json.load(json_file)
+    WK=WekeoPP(LOGIN["user"],LOGIN["password"], ARG.tif)
     WK.Where(ARG.shapefile, ARG.buffer)
     WK.When(ARG.start,ARG.end)
     if ARG.daily:
