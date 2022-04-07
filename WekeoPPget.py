@@ -143,14 +143,14 @@ class WekeoPP:
           }
         self.jrequests=[]
         for prod in self.productType:
-            print("test")
+            #print("test")
             for group in self.productGroupId:
                 for tile in self.tile:
                     temp=deepcopy(self.jrequest)
                     print(prod)
                     for y,x in enumerate(temp['stringChoiceValues']):
                         if x["name"]=='productType':
-                            print(prod,y)
+                            #print(prod,y)
                             temp['stringChoiceValues'][y]["value"]=prod
                     for y,x in enumerate(temp['stringChoiceValues']):
                         if x["name"]=='productGroupId':
@@ -347,8 +347,11 @@ if "__main__"==__name__:
     WK.AcceptLicense()
     WK.BuildRequests()
     print(WK.jrequest)
-    print(WK.jrequests)
+    #print(WK.jrequests)
     WK.Search4Requests()
-    print(WK.Files)
-    WK.OrderAndDownload()
+    #print(WK.Files)
+    Waiting=WK.OrderAndDownload()
+    if Waiting:
+        Waiting=WK.Download(Waiting)
+        print("File not yet available:", Waiting)
     
