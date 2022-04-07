@@ -1,9 +1,9 @@
 # WekeoPPget
-Python wrapper for [Wekeo API](https://www.wekeo.eu/docs/harmonised-data-access-api) to download [HR-VPP copernicus product](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity).
-The Wrapper allows to perform in one request the 5 interaction required by WEKEO
+Python wrapper for [Wekeo API](https://www.wekeo.eu/docs/harmonised-data-access-api) to download [HR-VPP copernicus products](https://land.copernicus.eu/pan-european/biophysical-parameters/high-resolution-vegetation-phenology-and-productivity).
+The Wrapper allows to perform in one request the 5 interactions required by WEKEO
 Notice that the wrapper accept the term and condition of [Copernicus](https://www.copernicus.eu/en/access-data/copyright-and-licences) 
-Further the wrapper, following the cookie-cutter approach of eLTER-PLUS project, use a shapefile to define a Bounding box to cut locally the tile downloaded from WEKEO. This had the advantage to download long time series or several statistics without overloading the memory of the computer.
-Given the cut is done on the client side, bandwith is consumed
+Further the wrapper, following the cookie-cutter approach of eLTER-PLUS project, use a shapefile to define a bounding box to cut locally the tile downloaded from WEKEO. This had the advantage to download long time series or several statistics without overloading the memory of the computer.
+Given the cut is done on the client side, the bandwith to download the full tile is consumed.
 
 usage: WereoPPget [-h] [--user USER] [--pswd PSWD] [--tif] [--start START] [--end END] [--shape SHAPEFILE] [--buffer BUFFER]
              [--tile TILE] (--yearly YEARLY | --daily DAILY | --10daily DAILY10) [--seasons SEASONS]
