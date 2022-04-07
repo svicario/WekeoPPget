@@ -17,7 +17,7 @@ class WekeoPP:
     urlOrder='https://wekeo-broker.apps.mercator.dpi.wekeo.eu/databroker/dataorder'
     NoLicense={'detail': 'Terms & conditions not accepted','status_code': 401,'title': 'Unauthorized'}
     Notoken={'detail': 'Missing or invalid token. Make sure your API invocation call has a header: "Authorization: Bearer ACCESS_TOKEN"','status_code': 403,'title': 'Forbidden'}
-    UTM=gpd.read_file("/home/saverio/Scaricati/utmzone/utmzone.shp")
+    UTM=gpd.read_file("./utmzone/utmzone.shp")
     def __init__(self, ID,password,tif=False):
         message=ID+":"+password
         import base64
